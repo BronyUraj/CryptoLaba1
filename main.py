@@ -65,9 +65,30 @@ def task6Decr(crypttext):
         print(result_decr, "key = ", k)
         result_decr = ""
 
+def task7encr(opentext):
+    result_encr = ""
+    for i in range(0, len(opentext)):
+        if opentext[i] in alphabetrus:
+            result_encr += alphabetrus[(alphabetrus.index(opentext[i]) + 13) % 33]
+        else:
+            result_encr += opentext[i]
+    return result_encr
+
+def task7decr(crypttext):
+    result_decr = ""
+    for i in range(0, len(crypttext)):
+        if crypttext[i] in alphabetrus:
+            result_decr += alphabetrus[(alphabetrus.index(crypttext[i]) - 13) % 33]
+        else:
+            result_decr += crypttext[i]
+    return result_decr
+
 if __name__ == '__main__':
-    print(task2encr("привет", 5, 8))
-    print(task2decr("члрэмн", 5, 8))
-    print(task1encr("Приколист", 4))
-    print(task1decr("Потрлиикс", 4))
-    task6Decr(task6_crypt)
+    # print(task2encr("привет", 5, 8))
+    # print(task2decr("члрэмн", 5, 8))
+    # print(task1encr("Приколист", 4))
+    # print(task1decr("Потрлиикс", 4))
+    #task6Decr(task6_crypt)
+    print(task7encr("Проверка Шифра Цезаря".lower()))
+    print(task7encr("ьэыосэчм ехбэм гсфмэл"))
+
