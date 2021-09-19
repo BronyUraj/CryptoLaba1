@@ -54,6 +54,25 @@ def task2decr(crypttext, key1, key2):
     return result_decr
 
 
+def task5encr(opentext, key):
+    result_encr = ""
+    for i in range(0, len(opentext)):
+        if opentext[i] in alphabetrus:
+            result_encr += alphabetrus[(alphabetrus.index(opentext[i]) + alphabetrus.index(key[i % len(key)])) % 33]
+        else:
+            result_encr += opentext[i]
+    return result_encr
+
+def task5decr(crypttext, key):
+    result_encr = ""
+    for i in range(0, len(crypttext)):
+        if crypttext[i] in alphabetrus:
+            result_encr += alphabetrus[(alphabetrus.index(crypttext[i]) - alphabetrus.index(key[i % len(key)])) % 33]
+        else:
+            result_encr += crypttext[i]
+    return result_encr
+
+
 def task6Decr(crypttext):
     result_decr = ""
     for k in range(1, 33):
@@ -88,7 +107,9 @@ if __name__ == '__main__':
     # print(task2decr("члрэмн", 5, 8))
     # print(task1encr("Приколист", 4))
     # print(task1decr("Потрлиикс", 4))
-    #task6Decr(task6_crypt)
-    print(task7encr("Проверка Шифра Цезаря".lower()))
-    print(task7encr("ьэыосэчм ехбэм гсфмэл"))
+    # task6Decr(task6_crypt)
+    # print(task7encr("Проверка Шифра Цезаря".lower()))
+    # print(task7decr("ьэыосэчм ехбэм гсфмэл"))
+    print(task5encr("раз два три", "леха"))
+    print(task5decr(task5encr("раз два три", "леха"), "леха"))
 
